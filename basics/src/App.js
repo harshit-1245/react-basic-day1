@@ -11,6 +11,11 @@ function App() {
       setInput('');
     }
   }
+  const deleteTodo=(index)=>{
+      const newTodo=[...todos];
+      newTodo.splice(index,1);
+      setTodos(newTodo);
+  }
  return(
   <div>
     <h1>Todo App</h1>
@@ -21,8 +26,9 @@ function App() {
           placeholder="Enter a new task..."
         />
     <button onClick={addTodo}>Add</button>
-    {todos.map((todos,index)=>(
-      <li key={index}>{todos}</li>
+    
+    {todos.map((todo,index)=>(
+      <li key={index}>{todo}<button onClick={()=>deleteTodo(index)}>delete</button></li>
       
     ))}
   </div>
